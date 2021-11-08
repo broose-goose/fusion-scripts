@@ -96,6 +96,9 @@ class MyExecuteHandler(adsk.core.CommandEventHandler):
 
             tempBrepMgr = adsk.fusion.TemporaryBRepManager.get()
 
+            collection: adsk.core.ObjectCollection = adsk.core.ObjectCollection.create()
+            baseBody: adsk.fusion.BRepBody = None
+
             baseFeat.startEdit()
 
             for x in range(xIter):
@@ -121,7 +124,19 @@ class MyExecuteHandler(adsk.core.CommandEventHandler):
                             0.0
                         )
                         tempBrepMgr.transform(tempBody, transform)
-                        subComp1.bRepBodies.add(tempBody, baseFeat)
+                        if baseBody == None:
+                            baseBody = subComp1.bRepBodies.add(tempBody, baseFeat)
+                        else:
+                            copyBody = subComp1.bRepBodies.add(tempBody, baseFeat)
+                            collection.add(copyBody)
+                        
+
+            combineFeatures = subComp1.features.combineFeatures
+            combineFeatureInput = combineFeatures.createInput(baseBody, collection)
+            combineFeatureInput.operation = 0
+            combineFeatureInput.isKeepToolBodies = False
+            combineFeatureInput.isNewComponent = False
+            combineFeatures.add(combineFeatureInput)
 
             baseFeat.finishEdit()
 
