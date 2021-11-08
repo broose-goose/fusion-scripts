@@ -1,0 +1,10 @@
+{
+	"autodeskProduct":	"Fusion360",
+	"type":	"script",
+	"author":	"",
+	"description":	{
+		"":	"Takes a box full of \"tile bodies\" and generates position file for light boards, and labels each light on or off"
+	},
+	"supportedOS":	"windows|mac",
+	"editEnabled":	true
+}

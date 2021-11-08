@@ -1,0 +1,10 @@
+{
+	"autodeskProduct":	"Fusion360",
+	"type":	"script",
+	"author":	"BROOSE",
+	"description":	{
+		"":	"Places circles at verticie of an inset triangle"
+	},
+	"supportedOS":	"windows|mac",
+	"editEnabled":	true
+}
