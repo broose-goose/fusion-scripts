@@ -262,7 +262,7 @@ class MyCommandCreatedHandler(adsk.core.CommandCreatedEventHandler):
         tileBody = inputs.addSelectionInput('tile_body', 'Tiled Bodies', 'Select the tiled body to pattern')
         tileBody.addSelectionFilter('SolidBodies')
         tileBody.addSelectionFilter('SurfaceBodies')
-        tileBody.setSelectionLimits(1,0)
+        tileBody.setSelectionLimits(1,1)
 
         blankBody = inputs.addSelectionInput('blank_body', 'Blank Bodies', 'Select a tiled body to pattern')
         blankBody.addSelectionFilter('SolidBodies')
